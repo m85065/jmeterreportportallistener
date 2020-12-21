@@ -207,7 +207,7 @@ public class ReportPortalClient {
 
     }
 
-    public String FinishStep(String endTime,String status,String launchid, String description, List<Attribute> attributes,String stepid)  throws ClientProtocolException, IOException, Exception
+    public Boolean FinishStep(String endTime,String status,String launchid, String description, List<Attribute> attributes,String stepid)  throws ClientProtocolException, IOException, Exception
     {
         if(this.httpClient == null)
         {
@@ -231,20 +231,20 @@ public class ReportPortalClient {
             CloseableHttpResponse response = httpClient.execute(httpPut);
 
             FinishItemResponse result = gson.fromJson(EntityUtils.toString(response.getEntity(), "UTF-8"),FinishItemResponse.class);
-            return result.message;
+            return response.getStatusLine().getStatusCode() == 200 ? true : false;
         } catch (ClientProtocolException e) {
            logger.error( e.getMessage());
-           return "failed";
+           return false;
         }
         catch (IOException e)
         {
             logger.error( e.getMessage());
-            return "failed";
+            return false;
         }
         catch (Exception e)
         {
             logger.error( e.getMessage());
-            return "failed";
+            return false;
         }       
 
     }

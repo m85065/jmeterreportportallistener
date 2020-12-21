@@ -79,12 +79,12 @@ public class ReportPortalClientTest {
         assertNotNull(caseid);
         String stepid = portalclient.createStep("Test Step", Long.toString(instant.toEpochMilli()), launchid, "A Unit Test Step", attributes, caseid);
         assertNotNull(stepid);
-        String stepresult = portalclient.FinishStep(Long.toString(instant.toEpochMilli()),"passed", launchid, "A Step description", attributes, stepid);
-        assertNotNull(stepresult);
-        String caseresult = portalclient.FinishStep(Long.toString(instant.toEpochMilli()),"passed", launchid, "A case description", attributes, caseid);
-        assertNotNull(caseresult);
-        String suiteresult = portalclient.FinishStep(Long.toString(instant.toEpochMilli()),"passed", launchid, "A Suite description", attributes, suitid);
-        assertNotNull(suiteresult);
+        Boolean stepresult = portalclient.FinishStep(Long.toString(instant.toEpochMilli()),"passed", launchid, "A Step description", attributes, stepid);
+        assertTrue(stepresult);
+        Boolean caseresult = portalclient.FinishStep(Long.toString(instant.toEpochMilli()),"passed", launchid, "A case description", attributes, caseid);
+        assertTrue(caseresult);
+        Boolean suiteresult = portalclient.FinishStep(Long.toString(instant.toEpochMilli()),"passed", launchid, "A Suite description", attributes, suitid);
+        assertTrue(suiteresult);
         String finishid = portalclient.FinishLaunch(Long.toString(instant.toEpochMilli()), launchid, "A Finish Launch", attributes);
         assertNotNull(finishid);
 
