@@ -1,6 +1,7 @@
 package com.github.laitoning.reporter;
 
 import com.github.laitoning.reporter.Response.*;
+import com.github.weisj.darklaf.components.Disposable;
 import com.github.laitoning.reporter.Request.*;
 import com.google.gson.*;
 import org.apache.commons.lang3.StringUtils;
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-public class ReportPortalClient {
+public class ReportPortalClient implements Disposable {
 
     private static final Logger logger = LoggerFactory.getLogger(ReportPortalClient.class);
     private String HOST;
@@ -29,8 +30,8 @@ public class ReportPortalClient {
     private String MODE;
     private Boolean RERUN;
     private String RERUNOF;
-    private String APIKEY;
-    private String PROJECTNAME;
+    public String APIKEY;
+    public String PROJECTNAME;
     private CloseableHttpClient httpClient;
 
     public ReportPortalClient(String host, String projectname, String name, String apikey) {
@@ -288,4 +289,7 @@ public class ReportPortalClient {
         }       
 
     }
+
+    public void dispose()
+    {}
 }
