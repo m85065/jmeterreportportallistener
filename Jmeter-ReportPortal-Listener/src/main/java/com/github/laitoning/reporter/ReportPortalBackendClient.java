@@ -59,11 +59,13 @@ public class ReportPortalBackendClient extends AbstractBackendListenerClient
     public static String PROTOCOL = "reporter.protocol";
     public static String LAUNCHNAME = "reporter.launchname";
     public static String APIKEY = "reporter.apikey";
+    public static String PROJECTNAME = "reporter.projectname";
 
     private static final Map<String,String> DEFAULT_ARGS = new LinkedHashMap<>();
     static {
-        DEFAULT_ARGS.put(HOSTNAME, "localhost");
+        DEFAULT_ARGS.put(HOSTNAME, "http://localhost:8080");
         DEFAULT_ARGS.put(LAUNCHNAME,"JmeterTestLaunch");
+        DEFAULT_ARGS.put(PROJECTNAME,"");
         DEFAULT_ARGS.put(APIKEY,"");
     }
 
